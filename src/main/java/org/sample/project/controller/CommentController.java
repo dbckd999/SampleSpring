@@ -25,14 +25,9 @@ public class CommentController{// extends SqlSessionDaoSupport {
 	
 	@RequestMapping(value = "/commentEvent", method = RequestMethod.GET)
 	@ResponseBody
-	public void commentEvent(@RequestParam("b_no") String b_no) {
-		
+	public List<CommentDTO> commentEvent(@RequestParam("b_no") String b_no) {
 		List<CommentDTO> list = service.allComment(); 
-		//sqlSession.selectList("comment.allComment", dto);
-		for(CommentDTO dto : list) {
-			System.out.println(dto.toString());
-		}
-		//return "";
+		return list;
 	}
 	
 }

@@ -8,7 +8,7 @@
 	</insert>
 											
 	<select id="showAllComment" resultType="org.sample.project.model.CommentDTO">
-		select c_comment from Comment where c_content_no = 3 order by c_no;
+		select c_id, c_comment from Comment where c_content_no = 3 order by c_no;
 	</select>
 	
 	<update id="aCommentUpdate">
