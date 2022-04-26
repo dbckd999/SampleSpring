@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.sample.project.mapper.MemberMapper">
+
+	<insert id="memberInsert">
+		INSERT INTO memberTBL(m_id, m_pw, m_address) VALUES(#{m_id}, #{m_pw}, #{m_address})
+	</insert>
+	
+	<select id="memberList" resultType="org.sample.project.model.MemberDTO">
+		SELECT * FROM memberTBL
+	</select>
+	
+	<delete id="memberDelete">
+		DELETE FROM memberTBL WHERE m_no=${m_no}
+	</delete>
+	
+	<select id="memberRead" resultType="org.sample.project.model.MemberDTO">
+		SELECT * FROM memberTBL WHERE m_no = ${m_no}
+	</select>
+	
+	<update id="memberUpdate">
+		UPDATE memberTBL SET m_id = #{m_id}, m_address = #{m_address} WHERE m_no = #{m_no}
+	</update>
+
+	<select id="getRealPassword" resultType="String">
+		select m_pw from memberTBL where m_id = #{m_id}
+	</select>
+</mapper>
