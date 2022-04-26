@@ -32,6 +32,11 @@
 			value="classpath*:mappers/*.xml" />
 	</bean>
 	
+	<bean id="sqlSessionTemplate"
+            class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="sqlSessionFactory"></constructor-arg>
+    </bean>
+	
 	<mybatis-spring:scan base-package="org.sample.project.mapper"/>
    <context:component-scan base-package="org.sample.project.service"></context:component-scan>
    

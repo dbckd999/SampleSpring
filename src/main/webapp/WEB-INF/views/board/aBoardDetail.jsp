@@ -34,14 +34,13 @@
 	</div>
 	
 	<script>
-		$(document).ready(function(){
-			$.ajax({
-				type: 'get',
-				url: '/commentEvent?b_no='+${dto.b_no},
-				success: function(data){
-					console.log(data);
-				}
-			});
+		$.ajax({
+			type: "GET",  
+			url: '/commentEvent?b_no='+${dto.b_no},
+			success: function(data) { 
+				console.log(data);
+					alert('성공'); 
+			}
 		});
 	</script>
 </body>

@@ -56,8 +56,4 @@ public class BoardController {
 		return "redirect:/boardList";
 	}
 	
-	@GetMapping("/commentEvent")
-	public String comment() {
-		return "/board/commentEvent";
-	}
 }
