@@ -4,11 +4,11 @@
 <mapper namespace="org.sample.project.mapper.CommentMapper">
 
 	<insert id="commentInsert">
-		INSERT INTO boardTBL (b_title, b_content, b_writer) VALUES(#{b_title}, #{b_content}, #{b_writer});
+		insert into Comment(c_id, c_content_no, c_comment) values(#{c_id}, #{c_content_no}, #{c_comment});
 	</insert>
 											
 	<select id="showAllComment" resultType="org.sample.project.model.CommentDTO">
-		select c_id, c_comment from Comment where c_content_no = 3 order by c_no;
+		select c_no, c_id, c_comment from Comment where c_content_no = #{b_no} order by c_no;
 	</select>
 	
 	<update id="aCommentUpdate">
@@ -16,6 +16,6 @@
 	</update>
 	
 	<delete id="aCommentDelete">
-		DELETE FROM boardTBL WHERE b_no = #{b_no};
+		DELETE FROM Comment WHERE c_no = #{c_no};
 	</delete>
 </mapper>

@@ -23,7 +23,7 @@ public class CommentMapperTest {
 	
 	@Test
 	public void BoardListTest() {
-		List<CommentDTO> list = commentMapper.showAllComment();
+		List<CommentDTO> list = commentMapper.showAllComment(0);
 		for(CommentDTO dto : list) {
 			log.info(dto);
 		}
