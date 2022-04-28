@@ -29,13 +29,8 @@ public class CommentController{
 	
 	@RequestMapping(value = "/addCommentEvent", method = RequestMethod.POST)
 	@ResponseBody
-	public boolean addCommentEvent(HttpServletRequest request) {
-		String m_id = request.getParameter("m_id");
-		String c_content_no = request.getParameter("c_content_no");
-		String c_comment = request.getParameter("c_comment");
-		
-		service.insertComment(m_id, c_content_no, c_comment);
-		
+	public boolean addCommentEvent(CommentDTO dto) {
+		service.insertComment(dto);
 		return true;
 	}
 	

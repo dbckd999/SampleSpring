@@ -12,7 +12,6 @@
 	<a href="boardList">보드 리스트로</a> <br>
 	<c:if test="${sessionScope.m_id eq dto.b_writer}">
 		<form action="ContentUpdate" method="post">
-			<input type="hidden" name="b_no" value="${dto.b_no}">
 			제목: <input type="text" name="b_title" value="${dto.b_title}"> <br>
 			내용: <input type="text" name="b_content" value="${dto.b_content}"> <br>
 			작성자: ${dto.b_writer} <br>
@@ -26,6 +25,8 @@
 		작성자: ${dto.b_writer} <br>
 		작성일: ${dto.b_reg_date} <br>
 	</c:if>
+	
+	<input type="hidden" name="b_no" value="${dto.b_no}">
 	
 	<c:if test="${not empty sessionScope.m_id}">
 		<input type="text" name="m_id" placeholder="ID" id="m_id" value="${sessionScope.m_id}" readonly>

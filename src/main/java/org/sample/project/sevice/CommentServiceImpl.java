@@ -18,12 +18,8 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public void insertComment(String m_id, String c_content_no, String c_comment) {
+	public void insertComment(CommentDTO dto) {
 		// TODO Auto-generated method stub
-		CommentDTO dto = new CommentDTO();
-		dto.setC_id(m_id);
-		dto.setC_content_no(Integer.parseInt(c_content_no));
-		dto.setC_comment(c_comment);
 		//System.out.println(m_id + ", " + c_content_no + ", " + c_comment);
 		mapper.commentInsert(dto);
 	}

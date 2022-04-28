@@ -8,6 +8,11 @@ function hasSession(){
 	
 $("#addComment").on('click', function(){
 	if(!hasSession()) return;
+	//최소한의 유효성 검사.
+	if($('input[id="c_comment"]').val().trim() === ""){
+		alert("댓글을 입력해 주세요");
+		return;
+	}
 	$.ajax({
 		type: "POST",
 		dataType: 'json',
@@ -21,6 +26,10 @@ $("#addComment").on('click', function(){
 				$("#c_comment").val('');
 				loadComment();
 			}
+		},
+		error: function(request, status, erorr){
+			console.log('request: ' + request + '\n status: ' + status + '\n erorr: ' + erorr);
+			console.log(request);
 		}
 	});
 });
@@ -32,15 +41,17 @@ function loadComment(){
 		url: '/commentEvent?b_no='+$('input[name="b_no"]').val(),
 		success: function(data) {
 			var tag = "<tr><td>이름</td><td>내용</td></tr>";
-			for (let i = 0; i < data.length; i++) {
+			
+			$(data).each(function(){
             	tag += "<tr>"
-        				+ "<td>" + data[i].c_id + "</td>" 
-   	                   	+ "<td>" + data[i].c_comment + "</td>"
-   	                   	if(data[i].c_id === $('input[id="m_id"]').val()){
-	   	                   	tag += "<td><button onclick='deleteComment(" + data[i].c_no + ")'>삭제</button></td>"
+        				+ "<td>" + this.c_id + "</td>" 
+   	                   	+ "<td>" + this.c_comment + "</td>"
+						+ "<td>" + this.c_reg_date + "</td>"
+   	                   	if(this.c_id === $('input[id="m_id"]').val()){
+	   	                   	tag += "<td><button onclick='deleteComment(" + this.c_no + ")'>삭제</button></td>"
    	                   	}
                    	 	+ "</tr>";
-            }
+			});
             $("#commentList").html(tag);
 		}
 	});
